@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Garage Daytona — Nos services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&family=Cairo:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#002375;--red:#B4002D;--ink:#0d1b3d;--muted:#5a6680;--line:#dbe3ee}
+*{box-sizing:border-box}
+html,body{margin:0;background:#0a1330;color:#fff;font-family:Poppins,system-ui,sans-serif}
+.stage{position:fixed;inset:0;z-index:0;overflow:hidden;background:#0a1330}
+.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1s ease,transform 7s ease-out}
+.stage video.on{opacity:1;transform:scale(1)}
+.shade{position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(0,20,70,.78) 0%,rgba(0,20,70,.45) 38%,rgba(0,20,70,.05) 70%),linear-gradient(0deg,rgba(0,10,40,.55),transparent 35%)}
+header{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 16px) 26px 12px}
+.logo{font-weight:800;font-size:18px;letter-spacing:.04em}.logo i{font-style:normal;color:#ff4a63}
+.cta{font-size:14px;font-weight:600;color:#fff;text-decoration:none;border:1.5px solid rgba(255,255,255,.7);border-radius:999px;padding:8px 16px}
+.steps{position:relative;z-index:3;width:min(470px,42vw);margin-left:6vw;padding:30vh 0 50vh}
+.step{min-height:100vh;display:flex;align-items:center}
+.card{padding:6px 0}
+.num{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#ffb3bf;margin-bottom:10px}
+.num:before{content:"";width:28px;height:2px;background:var(--red)}
+h1,h2{margin:0 0 12px;font-weight:800;line-height:1.08;letter-spacing:-.01em}
+h1{font-size:clamp(38px,5vw,68px)} h2{font-size:clamp(28px,3.4vw,44px)}
+p{margin:0;font-size:16px;line-height:1.65;color:rgba(255,255,255,.86);max-width:42ch}
+.ar{margin-top:16px;font-family:Cairo,sans-serif;direction:rtl;text-align:right;font-size:13px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:8px 12px;max-width:42ch}
+.contact{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.contact a{color:#fff;text-decoration:none;background:var(--red);padding:12px 18px;border-radius:999px;font-weight:600;font-size:14px}
+.contact a.alt{background:transparent;border:1.5px solid rgba(255,255,255,.7)}
+.rail{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:5;display:flex;flex-direction:column;gap:12px}
+.rail i{width:3px;height:22px;background:rgba(255,255,255,.3);border-radius:2px;transition:background .3s,height .3s}.rail i.on{background:#ff4a63;height:40px}
+.stripe{position:fixed;left:0;right:0;bottom:0;height:5px;z-index:6;display:flex}.stripe span{flex:1;background:var(--navy)}.stripe span+span{background:var(--red)}
+@media (max-width:820px){
+  .shade{background:linear-gradient(0deg,rgba(0,15,55,.92) 0%,rgba(0,15,55,.55) 45%,rgba(0,15,55,.1) 75%)}
+  .steps{width:auto;margin:0 20px;padding:55vh 0 40vh}
+  .step{align-items:flex-end;min-height:100vh;padding-bottom:10vh}
+  .rail{display:none}
+  .cta{display:none}
+}
+@media (prefers-reduced-motion:reduce){.stage video{transition:opacity .3s;transform:none}}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <video src="v/s0.mp4" muted playsinline loop preload="auto" class="on"></video>
+  <video src="v/s1.mp4" muted playsinline loop preload="metadata"></video>
+  <video src="v/s2.mp4" muted playsinline loop preload="metadata"></video>
+  <video src="v/s3.mp4" muted playsinline loop preload="metadata"></video>
+  <video src="v/s4.mp4" muted playsinline loop preload="metadata"></video>
+  <video src="v/s5.mp4" muted playsinline loop preload="metadata"></video>
+  <video src="v/s6.mp4" muted playsinline loop preload="metadata"></video>
+  <video src="v/s7.mp4" muted playsinline loop preload="metadata"></video>
+  <video src="v/s8.mp4" muted playsinline loop preload="metadata"></video>
+</div>
+<div class="shade"></div>
+<header><div class="logo">GARAGE <i>DAYTONA</i></div><a class="cta" href="#contact">Rendez-vous</a></header>
+<div class="rail" id="rail"></div>
+
+<main class="steps">
+<section class="step"><div class="card"><div class="num">Genève · depuis 28 ans</div><h1>Bienvenue Chez DAYTONA GARAGE</h1><p>Votre voiture mérite une attention d’exception.</p><div class="ar">معاينة بلقطات حقيقية مؤقتة (مجانية ومرخّصة). لاحقاً تنبدّل بتصوير الكراج نفسه.</div></div></section>
+<section class="step"><div class="card"><div class="num">Diagnostic</div><h2>Diagnostic électronique et mécanique</h2><p>Entretien, diagnostic, réparation ou géométrie : notre équipe qualifiée vous garantit un service rapide et précis.</p></div></section>
+<section class="step"><div class="card"><div class="num">Pneus</div><h2>Changement de pneus</h2><p>Montage et équilibrage pneus. Géométrie. Pneus neufs et d’occasion disponibles en stock.</p></div></section>
+<section class="step"><div class="card"><div class="num">Mécanique</div><h2>Services Mécaniques</h2><p>Contrôle complet des niveaux. Huile moteur. Recharge de batterie. Tous services mécaniques complets.</p></div></section>
+<section class="step"><div class="card"><div class="num">Transmission & direction</div><h2>Nous proposons tous les services mécaniques possibles.</h2><p>Après l’inspection de votre véhicule, nous déterminons les travaux nécessaires et vous communiquons un prix adapté à votre voiture.</p></div></section>
+<section class="step"><div class="card"><div class="num">Carrosserie</div><h2>Redonnez vie à votre voiture.</h2><p>Du diagnostic et de l’évaluation jusqu’à la réparation et la peinture finale. Nous prenons en charge les démarches avec votre assurance.</p></div></section>
+<section class="step"><div class="card"><div class="num">Contrôle technique OCV</div><h2>Passez votre contrôle technique sans stress.</h2><p>Inspection mécanique et visuelle complète : fluides, freins, pneus, éclairage et sécurité générale.</p></div></section>
+<section class="step"><div class="card"><div class="num">Nettoyage détaillé</div><h2>Plus qu’un nettoyage une vraie remise à neuf</h2><p>Sièges, tapis, tableau de bord, vitres, plafonnier : rien n’est laissé au hasard.</p></div></section>
+<section class="step" id="contact"><div class="card"><div class="num">DAYTONA GARAGE</div><h2>Toujours prêts à remettre votre véhicule sur la route</h2><p>Rue de Lausanne 64-66, 1202 Genève<br>Lundi – Vendredi : 07:30 – 17:00</p><div class="contact"><a href="tel:+41227329837">+41 22 732 98 37</a><a class="alt" href="mailto:garage-daytona@bluewin.ch">garage-daytona@bluewin.ch</a></div></div></section>
+</main>
+<div class="stripe"><span></span><span></span></div>
+
+<script>
+(function(){
+  const vids=[...document.querySelectorAll('.stage video')];
+  const steps=[...document.querySelectorAll('.step')];
+  const rail=document.getElementById('rail');
+  steps.forEach(()=>rail.appendChild(document.createElement('i')));
+  const bars=[...rail.children];
+  let cur=-1;
+  function show(i){
+    if(i===cur)return; cur=i;
+    vids.forEach((v,k)=>{
+      if(k===i){ if(v.preload!=='auto'){v.preload='auto';v.load();} v.classList.add('on'); const p=v.play(); if(p&&p.catch)p.catch(()=>{}); }
+      else { v.classList.remove('on'); setTimeout(()=>{ if(!v.classList.contains('on')) v.pause(); },1000); }
+      if(k===i+1 && v.preload!=='auto'){v.preload='auto';}
+    });
+    bars.forEach((b,k)=>b.classList.toggle('on',k===i));
+  }
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)show(steps.indexOf(e.target))}),{rootMargin:'-45% 0px -45% 0px'});
+  steps.forEach(s=>io.observe(s));
+  show(0);
+  document.addEventListener('touchstart',()=>{const v=vids[cur];v&&v.play().catch(()=>{})},{once:true,passive:true});
+})();
+</script>
+</body>
+</html>
