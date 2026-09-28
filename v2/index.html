@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Garage Daytona — Aperçu 3D des services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Cairo:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F0F5FA;--navy:#002375;--red:#B4002D;--ink:#0d1b3d;--muted:#5a6680;--line:#dbe3ee}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Poppins,system-ui,sans-serif}
+#stage{position:fixed;inset:0;z-index:1;background:radial-gradient(60% 55% at 62% 48%,#ffffff 0%,#f4f8fc 45%,#e6edf5 100%)}
+#stage canvas{display:block;width:100%;height:100%}
+.word{position:fixed;left:0;right:0;top:50%;transform:translateY(-58%);text-align:center;font-weight:800;font-size:clamp(70px,17vw,260px);letter-spacing:.06em;color:var(--navy);opacity:.06;z-index:0;pointer-events:none;transition:opacity .8s}
+header{position:fixed;top:0;left:0;right:0;z-index:4;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 14px) 22px 10px}
+.logo{font-weight:800;font-size:17px;letter-spacing:.04em}.logo b{color:var(--navy)}.logo i{font-style:normal;color:var(--red)}
+.tag{font-family:Cairo,sans-serif;font-size:12px;color:var(--muted);direction:rtl}
+.steps{position:relative;z-index:3;width:min(430px,40vw);margin-left:5vw;padding:40vh 0 55vh}
+.step{min-height:100vh;display:flex;align-items:center}
+.card{background:rgba(255,255,255,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:0 10px 30px rgba(0,35,117,.06)}
+.k{font-size:12px;font-weight:600;color:var(--red);margin-bottom:6px}
+h2{margin:0 0 8px;font-size:clamp(22px,2.4vw,30px);line-height:1.15;color:var(--navy);font-weight:800}
+p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
+.ar{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-family:Cairo,sans-serif;direction:rtl;text-align:right;font-size:13.5px;color:var(--ink);line-height:1.8}
+.ar b{color:var(--red)}
+.stripe{position:fixed;left:0;right:0;bottom:0;height:5px;z-index:5;display:flex}.stripe span{flex:1;background:var(--navy)}.stripe span+span{background:var(--red)}
+#load{position:fixed;inset:0;z-index:9;display:flex;align-items:center;justify-content:center;background:var(--bg);font-weight:600;color:var(--navy);transition:opacity .6s}
+.dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:10px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .3s,transform .3s}.dots i.on{background:var(--red);transform:scale(1.3)}
+@media (max-width:820px){
+  .steps{width:auto;margin:0 12px;padding:62vh 0 45vh}
+  .step{min-height:95vh;align-items:flex-end;padding-bottom:4vh}
+  .card{padding:16px 16px}
+  .word{top:32%}
+  .dots{display:none}
+}
+@media (prefers-reduced-motion:reduce){.word{transition:none}}
+</style>
+</head>
+<body>
+<div id="load">Chargement…</div>
+<div class="word" id="word">DAYTONA</div>
+<div id="stage"></div>
+<header><div class="logo"><b>GARAGE</b> <i>DAYTONA</i></div><div class="tag">معاينة 3D تجريبية</div></header>
+<div class="dots" id="dots"></div>
+
+<main class="steps">
+<section class="step" data-s="0"><div class="card"><div class="k">Genève</div><h2>Bienvenue Chez DAYTONA GARAGE</h2><p>Votre voiture mérite une attention d’exception.</p><div class="ar">السيارة ثابتة بالستوديو. <b>انزل بالسكرول</b> وشوف شو يصير مع كل خدمة.</div></div></section>
+<section class="step" data-s="1"><div class="card"><div class="k">Diagnostic</div><h2>Diagnostic électronique et mécanique</h2><p>Entretien, diagnostic, réparation ou géométrie.</p><div class="ar"><b>خط فحص أحمر</b> يمسح السيارة من طرف لطرف.</div></div></section>
+<section class="step" data-s="2"><div class="card"><div class="k">Pneus</div><h2>Changement de pneus</h2><p>Montage et équilibrage pneus. Géométrie. Pneus neufs et d’occasion disponibles en stock.</p><div class="ar"><b>الدواليب تنفك وتطلع لبرّا</b> وتلف، و<b>الفرامل تضل بمكانها</b>، وخطوط ليزر للجيومتري. وبالرجوع تتركّب.</div></div></section>
+<section class="step" data-s="3"><div class="card"><div class="k">Mécanique</div><h2>Services Mécaniques</h2><p>Contrôle complet des niveaux. Recharge de batterie. Tous services mécaniques complets.</p><div class="ar">الكاميرا تروح لقدام والبودي يصير شفاف. <b>المحرك والكبوت</b> يحتاجون الموديل المفكك المدفوع (هذا الموديل التجريبي ما فيه محرك).</div></div></section>
+<section class="step" data-s="4"><div class="card"><div class="k">Direction</div><h2>Nous proposons tous les services mécaniques possibles.</h2><p>Après l’inspection de votre véhicule, nous déterminons les travaux nécessaires.</p><div class="ar"><b>الستيرنج كامل مع العمود يطلع لفوق</b> من داخل السيارة. <b>الفيتيس</b> يحتاج الموديل المفكك.</div></div></section>
+<section class="step" data-s="5"><div class="card"><div class="k">Carrosserie</div><h2>Redonnez vie à votre voiture.</h2><p>Du diagnostic et de l’évaluation jusqu’à la réparation et la peinture finale.</p><div class="ar">البودي يصير <b>رمادي مطفي</b> (قبل الصبغ)، وبعدين <b>موجة صبغ</b> ترجعه يلمع. فك الطبون والأبواب يحتاج الموديل المفكك.</div></div></section>
+<section class="step" data-s="6"><div class="card"><div class="k">Contrôle technique OCV</div><h2>Passez votre contrôle technique sans stress.</h2><p>Contrôle des fluides, freins, pneus, éclairage et sécurité générale.</p><div class="ar">السيارة تصير <b>مثل الأشعة</b>، والأضواء تشتعل، و<b>نقاط الفحص تنبض</b> على الفرامل والإطارات.</div></div></section>
+<section class="step" data-s="7"><div class="card"><div class="k">Nettoyage détaillé</div><h2>Plus qu’un nettoyage une vraie remise à neuf</h2><p>Sièges, tapis, tableau de bord, vitres, plafonnier.</p><div class="ar">الكاميرا <b>تدخل من الزجاج</b> ويبان الداخل: المقاعد والطبلون والستيرنج.</div></div></section>
+<section class="step" data-s="8"><div class="card"><div class="k">DAYTONA GARAGE</div><h2>Toujours prêts à remettre votre véhicule sur la route</h2><p>+41 22 732 98 37 · +41 79 561 86 47<br>Rue de Lausanne 64-66, 1202 Genève</p><div class="ar">كل شي يرجع لمكانه، وبعدها الأرقام وفورم الحجز.</div></div></section>
+</main>
+<div class="stripe"><span></span><span></span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/environments/RoomEnvironment.js"></script>
+<script>
+(function(){
+const mobile=()=>innerWidth<=820;
+const stage=document.getElementById('stage');
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2.5));
+renderer.setSize(innerWidth,innerHeight);
+renderer.outputEncoding=THREE.sRGBEncoding;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
+stage.appendChild(renderer.domElement);
+const scene=new THREE.Scene();
+const pmrem=new THREE.PMREMGenerator(renderer);
+scene.environment=pmrem.fromScene(new THREE.RoomEnvironment(),0.04).texture;
+const camera=new THREE.PerspectiveCamera(32,innerWidth/innerHeight,0.1,100);
+
+// materials
+const bodyMat=new THREE.MeshPhysicalMaterial({color:0xf3f5f8,metalness:0.55,roughness:0.28,clearcoat:1,clearcoatRoughness:0.04,transparent:true,opacity:1});
+const glassMat=new THREE.MeshPhysicalMaterial({color:0xdde6f0,metalness:0.25,roughness:0,transmission:0.0,transparent:true,opacity:0.35});
+const accentMat=new THREE.MeshPhysicalMaterial({color:0xB4002D,metalness:0.6,roughness:0.3,clearcoat:1});
+const ghost=new THREE.MeshBasicMaterial({color:0x002375,wireframe:true,transparent:true,opacity:0.12});
+
+const car=new THREE.Group();scene.add(car);
+const wheels=[],steer={obj:null,base:null},brakes=[],fades=[];
+let lightMesh=[];
+
+// shadow
+new THREE.TextureLoader().load('shadow.png',t=>{
+  const m=new THREE.Mesh(new THREE.PlaneGeometry(0.655*4,1.3*4),new THREE.MeshBasicMaterial({map:t,blending:THREE.MultiplyBlending,toneMapped:false,transparent:true}));
+  m.rotation.x=-Math.PI/2;m.renderOrder=2;car.add(m);
+});
+// floor ring
+const floor=new THREE.Mesh(new THREE.CircleGeometry(6,64),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.55}));
+floor.rotation.x=-Math.PI/2;floor.position.y=-0.002;scene.add(floor);
+
+// scan plane
+const scan=new THREE.Mesh(new THREE.PlaneGeometry(0.05,1.6),new THREE.MeshBasicMaterial({color:0xB4002D,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false}));
+const scanGlow=new THREE.Mesh(new THREE.BoxGeometry(2.6,1.45,0.02),new THREE.MeshBasicMaterial({color:0xB4002D,transparent:true,opacity:0,depthWrite:false}));
+scanGlow.rotation.y=Math.PI/2;scene.add(scanGlow);
+// lasers
+const laserMat=new THREE.LineDashedMaterial({color:0xB4002D,dashSize:.06,gapSize:.04,transparent:true,opacity:0});
+const lasers=new THREE.Group();scene.add(lasers);
+// markers
+const markers=new THREE.Group();scene.add(markers);
+function marker(x,y,z){const g=new THREE.Group();const c=new THREE.Mesh(new THREE.SphereGeometry(.035,20,20),new THREE.MeshBasicMaterial({color:0xB4002D,transparent:true,opacity:0}));const r=new THREE.Mesh(new THREE.RingGeometry(.05,.065,40),new THREE.MeshBasicMaterial({color:0xB4002D,transparent:true,opacity:0,side:THREE.DoubleSide}));g.add(c,r);g.position.set(x,y,z);g.userData={c,r};markers.add(g);}
+
+const draco=new THREE.DRACOLoader();draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.4.1/');
+const loader=new THREE.GLTFLoader();loader.setDRACOLoader(draco);
+loader.load('car.glb',g=>{
+  const root=g.scene;
+  root.traverse(o=>{
+    if(!o.isMesh)return;
+    const n=o.material&&o.material.name;
+    if(n==='Body_Color'){o.material=bodyMat;}
+    else if(n==='Glass_Gray'){o.material=glassMat;}
+    else if(n==='Ferrari_Yellow'||n==='_0098_DodgerBlue'){o.visible=false;}
+    else {o.material=o.material.clone();o.material.transparent=true;fades.push(o.material);}
+    if(o.name==='lights'||o.name==='leds'){lightMesh.push(o);}
+  });
+  ['wheel_fl','wheel_fr','wheel_rl','wheel_rr'].forEach(k=>{
+    const w=root.getObjectByName(k);if(!w)return;
+    const parts=w.children.filter(c=>!/brake/.test(c.name));
+    const grp=new THREE.Group();w.add(grp);parts.forEach(p=>grp.add(p));
+    wheels.push({grp,side:w.position.x>0?1:-1,front:w.position.z>0});
+    brakes.push(w);
+    const wp=new THREE.Vector3();w.getWorldPosition(wp);
+    marker(wp.x+(wp.x>0?.13:-.13),wp.y,wp.z);
+    // laser line
+    const geo=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(wp.x+(wp.x>0?.25:-.25),0.02,wp.z-0.9),new THREE.Vector3(wp.x+(wp.x>0?.25:-.25),0.02,wp.z+0.9)]);
+    const l=new THREE.Line(geo,laserMat);l.computeLineDistances();lasers.add(l);
+  });
+  marker(0.72,0.62,2.05);marker(-0.72,0.62,2.05);marker(0,0.75,1.2);
+  steer.obj=root.getObjectByName('steering_wheel');if(steer.obj)steer.base=steer.obj.position.clone();
+  car.add(root);
+  document.getElementById('load').style.opacity=0;setTimeout(()=>document.getElementById('load').remove(),700);
+},undefined,e=>{document.getElementById('load').textContent='Erreur de chargement';});
+
+// scene targets: camera pos, look, fov offsets
+const S=[
+ {cam:[4.6,1.35,5.2],look:[0,.45,0]},
+ {cam:[5.4,1.6,1.2],look:[0,.5,0]},
+ {cam:[3.4,.75,3.6],look:[0,.35,.9]},
+ {cam:[2.4,1.9,4.4],look:[0,.5,1.1]},
+ {cam:[2.6,2.4,1.8],look:[0,.7,.2]},
+ {cam:[-4.8,1.2,3.6],look:[0,.45,0]},
+ {cam:[4.2,2.6,-3.8],look:[0,.4,0]},
+ {cam:[0.35,1.25,2.2],look:[0,.8,-.3]},
+ {cam:[-4.4,1.3,5.4],look:[0,.45,0]}
+];
+const cur={cam:new THREE.Vector3(...S[0].cam),look:new THREE.Vector3(...S[0].look)};
+let sIdx=0;
+const st={wheel:0,steer:0,ghost:0,prime:0,xray:0,scan:0,laser:0,lights:0,interior:0,word:1};
+const tgt=Object.assign({},st);
+function setScene(i){
+  sIdx=i;
+  Object.assign(tgt,{wheel:i===2?1:0,steer:i===4?1:0,ghost:(i===3||i===4)?1:0,prime:i===5?1:0,xray:i===6?1:0,scan:i===1?1:0,laser:i===2?1:0,lights:i===6?1:0,interior:i===7?1:0,word:(i===0||i===8)?1:0});
+  document.getElementById('word').style.opacity=tgt.word?'.06':'.02';
+  dots.forEach((d,k)=>d.classList.toggle('on',k===i));
+}
+const dotsEl=document.getElementById('dots');const dots=[];
+document.querySelectorAll('.step').forEach(()=>{const d=document.createElement('i');dotsEl.appendChild(d);dots.push(d)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)setScene(+e.target.dataset.s)}),{rootMargin:'-45% 0px -45% 0px'});
+document.querySelectorAll('.step').forEach(s=>io.observe(s));
+setScene(0);
+
+const white=new THREE.Color(0xf3f5f8),primer=new THREE.Color(0x8b939e);
+const clock=new THREE.Clock();
+function lerp(a,b,t){return a+(b-a)*t}
+function tick(){
+  const dt=Math.min(clock.getDelta(),.05),t=clock.elapsedTime,k=1-Math.pow(.02,dt);
+  for(const key in st)st[key]=lerp(st[key],tgt[key],k);
+  const sc=S[sIdx];
+  let cp=new THREE.Vector3(...sc.cam);
+  if(mobile()){cp.multiplyScalar(1.28);cp.y+=0.35;}
+  cur.cam.lerp(cp,k*.9);cur.look.lerp(new THREE.Vector3(...sc.look),k*.9);
+  camera.position.copy(cur.cam);camera.lookAt(cur.look);
+  // wheels
+  wheels.forEach(w=>{w.grp.position.x=w.side*0.55*st.wheel;w.grp.rotation.x=-t*2.2*st.wheel;});
+  // steering
+  if(steer.obj){steer.obj.position.y=steer.base.y+0.75*st.steer;steer.obj.rotation.z=Math.sin(t*1.2)*0.5*st.steer;}
+  // ghost / xray
+  const g=Math.max(st.ghost,st.xray,st.interior*0.8);
+  bodyMat.opacity=1-0.82*g;glassMat.opacity=0.35-0.3*Math.max(st.interior,st.xray);
+  fades.forEach(m=>m.opacity=1-0.5*st.xray);
+  bodyMat.color.copy(white).lerp(primer,st.prime*(0.5+0.5*Math.cos(Math.min(1,(t%3.2)/3.2)*Math.PI*2)>0?1:1)*0);
+  // paint sweep: primer -> white cycling
+  if(st.prime>0.02){const ph=(t%3.4)/3.4;const v=ph<.5?ph*2:1;bodyMat.color.copy(primer).lerp(white,v*st.prime+(1-st.prime));bodyMat.roughness=lerp(.75,.28,v);}
+  else{bodyMat.color.copy(white);bodyMat.roughness=.28;}
+  // scan
+  scanGlow.material.opacity=0.16*st.scan;scanGlow.position.set(0,.62,Math.sin(t*1.6)*2.1);scanGlow.visible=st.scan>.01;
+  laserMat.opacity=st.laser;
+  markers.children.forEach((m,i)=>{const p=((t*0.9+i*.17)%1);m.userData.c.material.opacity=st.xray;m.userData.r.material.opacity=st.xray*(1-p);m.userData.r.scale.setScalar(1+p*1.6);m.lookAt(camera.position);});
+  lightMesh.forEach(o=>{if(o.material.emissive){o.material.emissive.setRGB(1,.9,.6);o.material.emissiveIntensity=2*st.lights;}});
+  renderer.render(scene,camera);requestAnimationFrame(tick);
+}
+tick();
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+})();
+</script>
+</body>
+</html>
